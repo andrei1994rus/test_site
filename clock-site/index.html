@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Clock site</title>
+	<meta charset=utf-8/>
+	<script src="js/head_script.js"></script>
+	<link rel="stylesheet" href="css/text.css"></link>
+	<link rel="stylesheet" href="css/body.css"></link>
+</head>
+<body>
+	<P id="text"></P>
+	<script>
+		var text=document.getElementById("text");
+		text.innerHTML="<h1>Clock!</h1>";
+	</script>
+	<P id="time"></P>
+	<script src="js/time_script.js"></script>
+	<P id="warning">Click button to output time.</P>
+
+	<button type="button" id="button" onclick="input()">Turn on output time</button>
+</body>
+</html>
