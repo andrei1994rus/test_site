@@ -4,10 +4,10 @@
 		<meta charset=utf-8>
 		<title>Number generator</title>
 		<style>
-			h1 {text-align:center;color:orange;font-family:arial,helvetica;}
-			#warning {font-size:14pt;font-style:italic;font-weight:bold;color:orange;font-family:arial,helvetica;}
-			#numbers {text-align:center;font-size:18pt;font-style:italic;font-weight:bold;color:orange;font-family:arial,helvetica;}
-			p.Notice {text-align:center;font-size:14pt;font-style:italic;font-weight:bold;color:orange;font-family:arial,helvetica;}
+			h1 {text-align:center;color:white;font-family:arial,helvetica;}
+			#warning {font-size:14pt;font-style:italic;font-weight:bold;color:white;font-family:arial,helvetica;}
+			#numbers {text-align:center;font-size:18pt;font-style:italic;font-weight:bold;color:white;font-family:arial,helvetica;}
+			p.Notice {text-align:center;font-size:17pt;font-style:italic;font-weight:bold;color:white;font-family:arial,helvetica;}
 		</style>
 	</head>
 	<body background="random-numbers.jpg">
@@ -21,9 +21,12 @@
 		<p id="numbers"></p>
 		<script src="js/rand.js"></script>
 		<p class="Notice">
-			Notice: You need to input count of random numbers (left text field) and number what will be max number in range (right text field).
+			Notice: You need to input count of random numbers (left text field) and max number in range (right text field).
 		<p class="Notice">
-			Count isn't able to be 0. Default max number in range is 3000 (if you will not input number in bottom text field). Range is {0,max number}.
+			Count is how many random numbers you want. Count isn't able to be 0 and less and must be integer. 
+		</p>
+		<p class="Notice">
+			Max number is number to what you want to generate random number. Default max number is 3000 (if this text field is empty). Range is {0,max number}. Max number isn't able to be 0 and less and must be integer.
 		</p>
 	</body>
 </html>
