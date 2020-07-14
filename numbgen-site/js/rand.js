@@ -1,64 +1,135 @@
 const default_max_number=3000;
 const zero=0;
-const space=/ /;
-const rus_cymbols_l=/а-я/;
-const eng_cymbols_l=/a-z/;
-const rus_cymbols_u=/А-Я/;
-const eng_cymbols_u=/A-Z/;
+const numbers=/[1-9]/;
+const notNumbers=/\D/;
+var countHasChar;
+var maxHasChar;
 
 function output(e)
 {
 	var count=document.form.input_count.value;
 	console.log(`Count:${count}`);
 
-	if(count=="" || space.test(count))
+	countHasChar=stringHasChar(count);
+	console.log(`countHasChar:${countHasChar}`);
+
+	if(count=="")
 	{
-		
-		console.log("Left text field has empty string or space.");
-		alert("Input number.");
+		console.log("Left text field has empty string.");
+		alert("Don't left empty string in count.");
 	}
 
-	else if(rus_cymbols_u.test(count) || rus_cymbols_l.test(count) || eng_cymbols_u.test(count) || eng_cymbols_l.test(count))
+	else if(countHasChar)
 	{
-		console.log("Left text field has cymbols.");
-		alert("It is neccessary to input only numbers");
+		searchDash(count,document.form.input_count);
+		console.log(`countHasChar:${countHasChar}`);
+		
+		if(countHasChar)
+		{
+			console.log("Left text field has char.");
+			alert("It is neccessary to enter only integer numbers in left text field.");
+		}
 	}
 
-	else
+	if(!countHasChar)
 	{
-		var max_number=document.form.input_max_number.value;
-		console.log(`Max number:${max_number}`);
-		
-		if(space.test(max_number))
+		if(count<=0)
 		{
-			console.log("Right text field has space.");
-			alert("Input number.");
+			console.log("Left text field has number <=0.");
+			alert("Don't enter number <=0 in left text field.");
 		}
 
-		else if(rus_cymbols_u.test(max_number) || rus_cymbols_l.test(max_number) || eng_cymbols_u.test(max_number) || eng_cymbols_l.test(max_number))
+		else if(count>0)
 		{
-			console.log("Right text field has cymbols.");
-			alert("It is neccessary to input only numbers");
+			var max_number=document.form.input_max_number.value;
+			console.log(`Max number:${max_number}`);
+			maxHasChar=stringHasChar(max_number);
+			console.log(`maxHasChar:${maxHasChar}`);
+
+			if(maxHasChar)
+			{
+				searchDash(max_number,document.form.input_max_number);
+				if(maxHasChar)
+				{
+					console.log("Right text field has char.");
+					alert("It is neccessary to enter only integer numbers in right text field.");
+				}
+			}
+			
+			if(!maxHasChar)
+			{
+				if(max_number=="")
+				{
+					alert(`You didn't enter max number in right text field. Default max number is ${default_max_number}.`);
+					output_random(default_max_number,zero,count);
+				}
+
+				else if(max_number>0)
+				{
+					output_random(max_number,zero,count);
+				}
+
+				else if(max_number<=0)
+				{
+					console.log("Right text field has number <=0.");
+					alert("Don't enter number <=0 in right text field.");
+				}
+			}
 		}
+	}
+}
+
+function stringHasChar(string)
+{
+	return notNumbers.test(string) ? true : false;
+}
+
+function searchDash(string,input)
+{
+	if(string.search(/\p{Pd}/gu)==0 && string.length>1)
+	{
+		console.log("found dashes:"+string.match(/\p{Pd}/gu).length);
 		
-		else 
+		if(string.match(/\p{Pd}/gu).length==1)
 		{
-			if(max_number=="")
+			string=string.replace(/\p{Pd}/gu,'');
+			console.log("changed input:"+string);
+			
+			if(!stringHasChar(string))
 			{
-				output_random(default_max_number,zero,count);
+				setHasChar(false,input);
 			}
-
-			else if(max_number>0)
-			{
-				output_random(max_number,zero,count);
-			}
-
+			
 			else
 			{
-				console.log("Right text field has negative number.");
-				alert("Don't input negative numbers.")
+				setHasChar(true,input);
 			}
 		}
+		
+		else
+		{
+			setHasChar(true,input);
+		}
+	}
+	
+	else
+	{
+		setHasChar(true,input);
+	}
+}
+
+function setHasChar(value,input)
+{
+	if(input==document.form.input_count)
+	{
+		console.log("input==document.form.input_count");
+		countHasChar=value;		
+	}
+	
+	else if(input==document.form.input_max_number)
+	{
+		console.log("input==document.form.input_max_number");
+		maxHasChar=value;
 	}
 }
 
@@ -68,7 +139,7 @@ function output_random(max,min,count)
 	for(var i=0;i<count;i++)
 	{
 		var rand=Math.floor(Math.random()*(max-min))+min;
-		console.log(`Random number:${rand}`);
+		console.log(`Random number [${i}]:${rand}`);
 		array[i]=rand;
 		console.log(`Row:${array}`);
 	}
