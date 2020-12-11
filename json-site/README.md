@@ -2,4 +2,4 @@
 ---
 This page can save data in JSON and load from JSON.
 
-URL: http://35.246.52.49/json-site/ .
+[URL](https://andrei1994rus.github.io/json-site/) .

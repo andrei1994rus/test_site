@@ -5,4 +5,4 @@ This page has list what contains 3 links of pages:
 - Number generator;
 - Working with JSON.
 
-URL: http://35.246.52.49/ .
+[URL](https://andrei1994rus.github.io/) .
