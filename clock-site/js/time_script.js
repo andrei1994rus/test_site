@@ -28,7 +28,7 @@ function time()
 function dateToString(date)
 {
 	return "current time:"+dayToString(date.getDay())+" "+
-			necessaryAdd(date.getDate())+"."+necessaryAdd(date.getMonth())+"."+
+			necessaryAdd(date.getDate())+"."+necessaryAdd(date.getMonth()+1)+"."+
 			date.getFullYear()+" "+necessaryAdd(date.getHours())+":"+
 			necessaryAdd(date.getMinutes())+":"+necessaryAdd(date.getSeconds());
 }
