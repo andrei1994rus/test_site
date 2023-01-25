@@ -6,7 +6,7 @@
 		<style>
 			h1 {text-align:center;color:white;font-family:arial,helvetica;}
 			#warning {font-size:14pt;font-style:italic;font-weight:bold;color:white;font-family:arial,helvetica;}
-			#numbers {text-align:center;font-size:18pt;font-style:italic;font-weight:bold;color:white;font-family:arial,helvetica;}
+			#numbers {text-align:center;font-size:18pt;width:100%;word-break:break-all;padding-right:2px;padding-bottom:2px;font-style:italic;font-weight:bold;color:white;font-family:arial,helvetica;}
 			p.Notice {text-align:center;font-size:17pt;font-style:italic;font-weight:bold;color:white;font-family:arial,helvetica;}
 		</style>
 	</head>
@@ -18,7 +18,7 @@
 			<input type="text" name="input_max_number"></input>
 			<input type="button" name="rand_button" value="Random"></input>
 		</form>
-		<p id="numbers"></p>
+		<div id="numbers"></div>
 		<script src="js/rand.js"></script>
 		<p class="Notice">
 			Notice: You need to input count of random numbers (left text field) and max number in range (right text field).

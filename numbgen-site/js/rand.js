@@ -143,8 +143,7 @@ function output_random(max,min,count)
 		array[i]=rand;
 		console.log(`Row:${array}`);
 	}
-	document.getElementById("numbers").innerHTML=`<p>Row of random numbers:[${array}]</p>`;
-	
+	document.getElementById("numbers").innerHTML=`<p>Row of random numbers:</p> [${array}]`;
 }
 
 var button=document.form.rand_button;
