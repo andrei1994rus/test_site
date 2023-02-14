@@ -29,7 +29,8 @@ function serialize()
 		    age:age_value
 		};
 		let serializedUser=JSON.stringify(user);
-		document.cookie=`${serializedUser}`;
+		let maxAge=60*60*24*365;
+		document.cookie=`${serializedUser};max-age=${maxAge}`;
 		console.log(`serializedUser:${serializedUser}`);
 		console.log(`cookie: ${document.cookie}`);
 		document.getElementById("message").innerHTML=`<h1>Serialized user:${serializedUser}</h1>`;
